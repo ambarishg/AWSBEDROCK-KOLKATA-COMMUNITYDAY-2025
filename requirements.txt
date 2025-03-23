@@ -1,0 +1,7 @@
+boto3
+qdrant-client
+sentence-transformers
+streamlit
+python-dotenv
+pandas
+PyPDF2
