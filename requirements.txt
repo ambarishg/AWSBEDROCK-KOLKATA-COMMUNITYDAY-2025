@@ -5,3 +5,9 @@ streamlit
 python-dotenv
 pandas
 PyPDF2
+botocore==1.34.162 
+crewai==0.70.1 
+crewai_tools==0.12.1 
+duckduckgo-search==6.3.1
+langchain_aws==0.1.17
+langgraph
