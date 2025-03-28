@@ -28,7 +28,7 @@ Use Agents using Crew AI and Anthropic Claude to generate answers with Tools
 
 <hr/>               
 
-![Amazon Bedrock with Anthropic Claude](image-2.png)    ![Qdrant](image-3.png)       
+![Amazon Bedrock with Anthropic Claude](Claude.png)    ![Qdrant](Qdrant.png)       
 
 Discover Advanced RAG with Qdrant and Amazon Bedrock with Anthropic Claude                                        
 *  Dense Embeddings              
