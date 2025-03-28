@@ -3,22 +3,21 @@ import qdrant_client as qc
 import qdrant_client.http.models as qmodels
 from qdrant_client.http.models import *
 from sentence_transformers import SentenceTransformer
-from dotenv import load_dotenv
-from dotenv import dotenv_values
+
 import json
 import boto3
+import os
 
 class RAG_QDRANT_BEDROCK:
     def __init__(self):
         self.name = 'RAG_QDRANT_BEDROCK'
         self.description = 'Retrieve and Generate with Qdrant and Bedrock'
-        load_dotenv()
-        values_env = dotenv_values(".env")
-        URL = values_env['QDRANT_URL']
-        COLLECTION_NAME = values_env['QDRANT_COLLECTION']
-        DIMENSION = int(values_env['DIMENSION'])
-        MODEL_NAME = values_env['MODEL_NAME']
-        API_KEY = values_env['QDRANT_KEY']
+
+        URL = os.environ.get('QDRANT_URL')
+        COLLECTION_NAME = os.environ.get('QDRANT_COLLECTION')
+        DIMENSION = int(os.environ.get('DIMENSION'))
+        MODEL_NAME = os.environ.get('MODEL_NAME')
+        API_KEY = os.environ.get('QDRANT_KEY')
         self.model = SentenceTransformer(MODEL_NAME)  
         self.URL = URL
         self.COLLECTION_NAME = COLLECTION_NAME
@@ -51,7 +50,7 @@ class RAG_QDRANT_BEDROCK:
     def generate_completion(self,context:str,query:str)->str:
 
         prompt_data = f"""Human: Answer the question based on the following context:
-        {context}\n\n {query}
+        {context}\n\n {query}. If you do not find the answer from the context please state I do not know
         Assistant:"""
 
         body = json.dumps({"prompt": prompt_data, 
