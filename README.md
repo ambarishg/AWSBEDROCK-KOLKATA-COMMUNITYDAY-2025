@@ -31,8 +31,8 @@ Use Agents using Crew AI and Anthropic Claude to generate answers with Tools
 ![Amazon Bedrock with Anthropic Claude](image-2.png)    ![Qdrant](image-3.png)       
 
 Discover Advanced RAG with Qdrant and Amazon Bedrock with Anthropic Claude                                        
-     *  Dense Embeddings              
-     *  Sparse Embeddings             
-     *  Dense , Sparse  Embeddings and Fusion Techniques           
-     *  Dense, Sparse and Late Interaction Techniques        
+*  Dense Embeddings              
+*  Sparse Embeddings             
+*  Dense , Sparse  Embeddings and Fusion Techniques           
+*  Dense, Sparse and Late Interaction Techniques        
 <hr/>    
