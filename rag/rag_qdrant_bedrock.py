@@ -3,6 +3,9 @@ import qdrant_client as qc
 import qdrant_client.http.models as qmodels
 from qdrant_client.http.models import *
 from sentence_transformers import SentenceTransformer
+import boto3
+import json
+import os
 
 import json
 import boto3
@@ -74,3 +77,35 @@ class RAG_QDRANT_BEDROCK:
         context = self.retrieve(query)
         completion = self.generate_completion(context,query)
         return completion
+    
+    def query_nova(self,query:str)->str:
+        context = self.retrieve(query)
+        completion = self.generate_completion_nova(context,query)
+        return completion
+    
+    def generate_completion_nova(self,context:str,query:str)->str:
+        
+        SYSTEM_PROMPT = """
+        You are a virtual assistant.
+        Please answer the questions based on the provided context.
+        If the answer is not found in the context, please answer I do not know.
+        """
+        system = [{ "text": SYSTEM_PROMPT }]
+
+        client = boto3.client(
+            "bedrock-runtime",
+            aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
+            aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"),
+            region_name="us-east-1")
+
+        messages=[]
+        messages.append({"role": "user", "content": [{"text": query}]})
+        messages.append({"role": "user", "content": [{"text": context}]})
+
+        model_response = client.converse(
+            modelId="amazon.nova-lite-v1:0", 
+            messages=messages,
+            system = system
+        )
+
+        return((model_response["output"]["message"]["content"][0]["text"]))
