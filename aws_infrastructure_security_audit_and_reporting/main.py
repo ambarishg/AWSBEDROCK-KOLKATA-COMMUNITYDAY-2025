@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys
-from aws_infrastructure_security_audit_and_reporting.crew import AwsInfrastructureSecurityAuditAndReportingCrew
+from crew import AwsInfrastructureSecurityAuditAndReportingCrew
 
 # This main file is intended to be a way for your to run your
 # crew locally, so refrain from adding unnecessary logic into this file.
