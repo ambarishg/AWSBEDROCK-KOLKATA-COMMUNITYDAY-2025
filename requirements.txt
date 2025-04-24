@@ -12,3 +12,4 @@ duckduckgo-search==6.3.1
 langchain_aws==0.1.17
 langgraph
 fastembed
+groq
